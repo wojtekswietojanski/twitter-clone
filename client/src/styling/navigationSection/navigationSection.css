@@ -1,9 +1,9 @@
 #leftAside {
+  border-right: 1px rgba(128, 128, 128, 0.301) solid;
   position: sticky;
   top: 0px;
   box-sizing: border-box;
   height: 100vh;
-  background-color: aliceblue;
   width: 300px;
   font-size: 25px;
   font-weight: 300;

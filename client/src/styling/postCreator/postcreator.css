@@ -1,0 +1,32 @@
+#postCreator {
+  margin-bottom: 40px;
+  width: 500px;
+  max-width: calc(100vw - 300px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 1px rgba(128, 128, 128, 0.301) solid;
+  padding: 10px;
+}
+#postCreator #postContent {
+  height: 100px;
+  font-size: 20px;
+  border: none;
+}
+#postCreator #postImg {
+  border: none;
+}
+#postCreator button {
+  font-size: 17px;
+  font-weight: 550;
+  width: 100px;
+  align-self: flex-end;
+  padding: 5px;
+  background-color: blue;
+  color: white;
+  border-radius: 15px;
+  border: none;
+}
+#postCreator button:hover {
+  background-color: rgba(0, 0, 255, 0.692);
+}/*# sourceMappingURL=postcreator.css.map */

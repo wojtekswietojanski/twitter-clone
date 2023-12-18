@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const { default: mongoose } = require("mongoose");
 const User = require("./models/user.js");
+const Post = require("./models/post.js");
 const app = express();
 const bcrypt = require("bcrypt");
 const jsonWebToken = require("jsonwebtoken");
@@ -70,6 +71,38 @@ app.get("/profile", async (req, res) => {
 //wylogowywanie
 app.post("/logout", async (req, res) => {
   res.cookie("token", "").json("ok");
+});
+
+//dodawanie posta do bazy danych
+
+app.post("/createPost", async (req, res) => {
+  const { username, postContent, imgUrl, todayDate } = req.body;
+
+  try {
+    const postDoc = await Post.create({
+      username,
+      postContent,
+      imgUrl,
+      todayDate,
+    });
+    res.json(postDoc);
+    console.log(postDoc);
+  } catch (error) {
+    res
+      .status(400)
+      .json({ error: "Failed to create a post", details: error.message });
+    console.log(error + "błąd przy zapisywaniu posta w bazie");
+  }
+});
+
+app.get("/showPosts", async (req, res) => {
+  try {
+    const posts = await Post.find();
+    res.json(posts);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Wystąpił błąd przy pobieraniu postów" });
+  }
 });
 
 mongoose.connect(
