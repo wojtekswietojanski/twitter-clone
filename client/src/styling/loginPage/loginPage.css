@@ -39,6 +39,7 @@
   font-weight: 500;
   padding: 8px;
   border-radius: 20px;
+  cursor: pointer;
 }
 .formContainer form button:hover {
   background-color: rgba(0, 0, 0, 0.822);
