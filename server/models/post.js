@@ -6,6 +6,8 @@ const PostSchema = new Schema({
   postContent: { type: String },
   imgUrl: { type: String },
   todayDate: { type: String },
+  likes: { type: Number },
+  comments: [{ author: String, content: String }],
 });
 
 const PostModel = model("Post", PostSchema);

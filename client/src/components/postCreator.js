@@ -20,6 +20,9 @@ const PostCreator = () => {
     // Nazwa użytkownika
     const username = userInfo.username;
 
+    var likes = 0;
+    var comments = [{}];
+
     const response = await fetch("http://localhost:4000/createPost", {
       method: "POST",
       body: JSON.stringify({
@@ -27,6 +30,8 @@ const PostCreator = () => {
         postContent,
         imgUrl,
         todayDate,
+        likes,
+        comments,
       }),
       headers: { "Content-Type": "application/json" },
     });

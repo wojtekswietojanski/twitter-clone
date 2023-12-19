@@ -17,6 +17,7 @@
   border: none;
 }
 #postCreator button {
+  cursor: pointer;
   font-size: 17px;
   font-weight: 550;
   width: 100px;
@@ -29,4 +30,4 @@
 }
 #postCreator button:hover {
   background-color: rgba(0, 0, 255, 0.692);
-}/*# sourceMappingURL=postcreator.css.map */
+}/*# sourceMappingURL=postCreator.css.map */

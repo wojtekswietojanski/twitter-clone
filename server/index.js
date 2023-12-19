@@ -76,7 +76,8 @@ app.post("/logout", async (req, res) => {
 //dodawanie posta do bazy danych
 
 app.post("/createPost", async (req, res) => {
-  const { username, postContent, imgUrl, todayDate } = req.body;
+  const { username, postContent, imgUrl, todayDate, likes, comments } =
+    req.body;
 
   try {
     const postDoc = await Post.create({
@@ -84,6 +85,8 @@ app.post("/createPost", async (req, res) => {
       postContent,
       imgUrl,
       todayDate,
+      likes,
+      comments,
     });
     res.json(postDoc);
     console.log(postDoc);
@@ -95,6 +98,7 @@ app.post("/createPost", async (req, res) => {
   }
 });
 
+//Wyświetlanie postów
 app.get("/showPosts", async (req, res) => {
   try {
     const posts = await Post.find();
@@ -102,6 +106,37 @@ app.get("/showPosts", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Wystąpił błąd przy pobieraniu postów" });
+  }
+});
+
+//dawanie like
+app.put("/like/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { plusMinus } = req.body;
+    const selectedPost = await Post.findByIdAndUpdate(id, {
+      $inc: { likes: parseFloat(plusMinus) },
+    });
+    res.json(selectedPost);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+//Dawanie komentarza
+app.put("/comment/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { author, commentContent } = req.body;
+    const selectedPost = await Post.findByIdAndUpdate(id, {
+      $push: {
+        comments: { author: author, content: commentContent },
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 

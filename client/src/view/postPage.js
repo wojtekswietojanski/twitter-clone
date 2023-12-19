@@ -25,7 +25,6 @@ const PostPage = () => {
         .json()
         .then((DBposts) => {
           setPosts(DBposts);
-          console.log(DBposts);
         })
         .catch((error) => {
           console.error("Wystąpił błąd podczas pobierania postów:", error);
@@ -34,6 +33,14 @@ const PostPage = () => {
   }, []);
 
   const username = userInfo?.username;
+
+  const checkLikes = (arg) => {
+    if (arg) {
+      return arg;
+    } else {
+      return 0;
+    }
+  };
 
   return (
     <main>
@@ -48,6 +55,9 @@ const PostPage = () => {
               content={post.postContent}
               date={post.todayDate}
               imgUrl={post.imgUrl}
+              postId={post._id}
+              likes={checkLikes(post.likes)}
+              comments={post.comments}
             />
           ))}
       </section>
