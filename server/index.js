@@ -140,6 +140,74 @@ app.put("/comment/:id", async (req, res) => {
   }
 });
 
+//Wyświetlanie postów konkretnego uzytkownika
+app.get("/showUserPosts/:username", async (req, res) => {
+  const { username } = req.params;
+
+  try {
+    const posts = await Post.find({ username: username });
+    res.json(posts);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Wystąpił błąd przy pobieraniu postów" });
+  }
+});
+
+// Dodawanie do listy obserwowanych osób
+
+app.put("/follow", async (req, res) => {
+  const { author, username, trueOrFalse } = req.body;
+  try {
+    const user = await User.findOne({ username: username });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    if (trueOrFalse == "false") {
+      var followingUser = await User.findOneAndUpdate(
+        { username: username },
+        {
+          $push: {
+            you_follow: author,
+          },
+        }
+      );
+    } else {
+      var followingUser = await User.findOneAndUpdate(
+        { username: username },
+        {
+          $pull: {
+            you_follow: author,
+          },
+        }
+      );
+    }
+
+    res.json(followingUser);
+  } catch (error) {
+    res.status(500).json({ error: "error occured while following action" });
+  }
+});
+
+//Obsługa żądania pokazania listy kont obserwowanych przez usera
+app.get("/checkFollowingStatus/:loggedUser", async (req, res) => {
+  const { loggedUser } = req.params;
+  try {
+    // Use `await` when querying the database to ensure asynchronous behavior
+    const user = await User.findOne({ username: loggedUser });
+    if (!user) {
+      // Return a 404 status with an informative error message
+      return res.status(404).json({ error: "User not found" });
+    }
+    // Return the 'you_follow' array of the found user
+    res.json(user.you_follow);
+  } catch (error) {
+    // Improve error message to provide more details
+    res.status(500).json({
+      error: "Error occurred while checking following status action",
+      details: error.message, // Include the error message for debugging
+    });
+  }
+});
 mongoose.connect(
   "mongodb+srv://wojswiet02:RYx9234EEgbtdsyI@cluster0.d2rvsgf.mongodb.net/?retryWrites=true&w=majority"
 );

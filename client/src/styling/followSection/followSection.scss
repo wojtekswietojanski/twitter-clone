@@ -33,3 +33,21 @@
     }
   }
 }
+@media (max-width: 870px) {
+  #rightAside {
+    padding: 0 5px;
+    #peopleYouFollow {
+      font-size: 20px;
+    }
+    .followInfo {
+      .followName {
+        font-size: 15px;
+      }
+    }
+  }
+}
+@media (max-width: 600px) {
+  #rightAside {
+    display: none;
+  }
+}

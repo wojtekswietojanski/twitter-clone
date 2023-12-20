@@ -1,0 +1,12 @@
+.commentTemplate {
+  margin-left: 20px;
+  margin-top: 5px;
+  padding: 10px;
+}
+.commentTemplate p {
+  margin: 0;
+}
+.commentTemplate:not(:first-of-type) {
+  border: 1px grey solid;
+  border-radius: 10px;
+}/*# sourceMappingURL=comments.css.map */

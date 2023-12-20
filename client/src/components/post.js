@@ -1,10 +1,10 @@
 import Like from "../assets/like.png";
 import Comment from "../assets/chat.png";
 import "../styling/post/post.css";
-import { useState } from "react";
-import { useRef, useEffect, useContext } from "react";
+import { useRef, useContext, useState } from "react";
 import CommentTemplate from "./comment";
 import { UserContext } from "../userContext";
+import { Link } from "react-router-dom";
 
 const Post = ({ name, date, content, imgUrl, postId, likes, comments }) => {
   const [updatedLikes, setUpdatedLikes] = useState(likes);
@@ -13,7 +13,11 @@ const Post = ({ name, date, content, imgUrl, postId, likes, comments }) => {
 
   const { userInfo } = useContext(UserContext);
   const ifLogged = userInfo?.username;
-  const username = userInfo.username;
+  try {
+    var username = userInfo.username;
+  } catch (error) {
+    console.log(error);
+  }
 
   const ref = useRef(null);
   const ref1 = useRef(null);
@@ -90,7 +94,7 @@ const Post = ({ name, date, content, imgUrl, postId, likes, comments }) => {
         <div className="profileFoto"></div>
         <div className="textContent">
           <p>
-            <b>{name} </b>
+            <Link to={"/showUserPosts/" + name}>{name} </Link>
             {date}
           </p>
           <p>{content}</p>

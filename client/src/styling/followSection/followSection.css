@@ -32,4 +32,21 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+@media (max-width: 870px) {
+  #rightAside {
+    padding: 0 5px;
+  }
+  #rightAside #peopleYouFollow {
+    font-size: 20px;
+  }
+  #rightAside .followInfo .followName {
+    font-size: 15px;
+  }
+}
+@media (max-width: 600px) {
+  #rightAside {
+    display: none;
+  }
 }/*# sourceMappingURL=followSection.css.map */

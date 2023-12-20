@@ -22,6 +22,10 @@
 .postContainer .postInfo .textContent p {
   margin: 0px;
 }
+.postContainer .postInfo .textContent p a {
+  color: black;
+  font-weight: 500;
+}
 .postContainer .postFoto {
   margin: 10px 0px 10px 60px;
   border-radius: 10px;
@@ -35,6 +39,9 @@
   margin-left: 60px;
   display: flex;
   gap: 20px;
+}
+.postContainer .stats a:hover {
+  filter: invert(50%);
 }
 .postContainer .stats a .clicked {
   filter: invert(9%) sepia(99%) saturate(6156%) hue-rotate(246deg) brightness(94%) contrast(148%);
@@ -75,4 +82,15 @@
 }
 .postContainer .commentsSection form button:hover {
   background-color: rgba(0, 0, 255, 0.655);
+}
+
+@media (max-width: 600px) {
+  .postContainer {
+    box-sizing: border-box;
+    max-width: none;
+    width: calc(100vw - 123px);
+  }
+  .postContainer .postInfo {
+    padding: 5px;
+  }
 }/*# sourceMappingURL=post.css.map */

@@ -1,0 +1,28 @@
+.profileSection {
+  box-sizing: border-box;
+  padding-right: 20px;
+}
+.profileSection .profileInfo {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+.profileSection .profileInfo p {
+  font-size: 20px;
+  font-weight: 500;
+}
+.profileSection .profileInfo button {
+  cursor: pointer;
+  width: 100px;
+  font-size: 16px;
+  padding: 5px;
+  border: none;
+  background-color: blue;
+  color: white;
+  border-radius: 15px;
+}
+.profileSection .profileInfo button:hover {
+  background-color: rgba(0, 0, 255, 0.655);
+}
+.profileSection .postContainer .postInfo {
+  border-top: 1px rgba(128, 128, 128, 0.692) solid;
+}/*# sourceMappingURL=userPosts.css.map */

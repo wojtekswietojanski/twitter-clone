@@ -1,3 +1,5 @@
+import "../styling/comments/comments.css";
+
 const CommentTemplate = ({ username, content }) => {
   return (
     <div className="commentTemplate">

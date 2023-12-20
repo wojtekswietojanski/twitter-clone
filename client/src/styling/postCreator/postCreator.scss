@@ -31,3 +31,12 @@
     }
   }
 }
+
+@media (max-width: 600px) {
+  #postCreator {
+    box-sizing: border-box;
+    max-width: none;
+    width: calc(100vw - 113px);
+    padding: 5px;
+  }
+}

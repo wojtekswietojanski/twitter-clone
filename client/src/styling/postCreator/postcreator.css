@@ -30,4 +30,13 @@
 }
 #postCreator button:hover {
   background-color: rgba(0, 0, 255, 0.692);
+}
+
+@media (max-width: 600px) {
+  #postCreator {
+    box-sizing: border-box;
+    max-width: none;
+    width: calc(100vw - 113px);
+    padding: 5px;
+  }
 }/*# sourceMappingURL=postCreator.css.map */

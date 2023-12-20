@@ -1,10 +1,11 @@
 #leftAside {
+  min-width: 80px;
   border-right: 1px rgba(128, 128, 128, 0.301) solid;
   position: sticky;
   top: 0px;
   box-sizing: border-box;
   height: 100vh;
-  width: 300px;
+  max-width: 300px;
   font-size: 25px;
   font-weight: 300;
   padding: 20px;
@@ -37,4 +38,16 @@
 }
 #leftAside #logout {
   cursor: pointer;
+}
+
+@media (max-width: 950px) {
+  #leftAside {
+    padding: 10px 5px 10px 5px;
+  }
+  #leftAside #links .navigationLink {
+    font-size: 0px;
+  }
+  #leftAside #loginOrRegister a {
+    font-size: 20px;
+  }
 }/*# sourceMappingURL=navigationSection.css.map */

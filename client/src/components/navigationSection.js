@@ -44,7 +44,7 @@ const NavigationSection = () => {
           <a id="logout" onClick={logout}>
             Logout
           </a>
-          <Link to="/myProfile" id="myProfile">
+          <Link to={"/showUserPosts/" + userInfo.username} id="myProfile">
             My profile
           </Link>
         </div>

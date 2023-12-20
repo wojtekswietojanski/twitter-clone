@@ -1,4 +1,10 @@
 main {
   display: flex;
   justify-content: center;
+  box-sizing: border-box;
+}
+@media (width < 601px) {
+  main {
+    justify-content: flex-start;
+  }
 }

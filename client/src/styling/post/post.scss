@@ -18,6 +18,10 @@
       font-size: 15px;
       p {
         margin: 0px;
+        a {
+          color: black;
+          font-weight: 500;
+        }
       }
     }
   }
@@ -35,6 +39,9 @@
     display: flex;
     gap: 20px;
     a {
+      &:hover {
+        filter: invert(50%);
+      }
       .clicked {
         filter: invert(9%) sepia(99%) saturate(6156%) hue-rotate(246deg)
           brightness(94%) contrast(148%);
@@ -76,6 +83,16 @@
           background-color: rgba(0, 0, 255, 0.655);
         }
       }
+    }
+  }
+}
+@media (max-width: 600px) {
+  .postContainer {
+    box-sizing: border-box;
+    max-width: none;
+    width: calc(100vw - 123px);
+    .postInfo {
+      padding: 5px;
     }
   }
 }
